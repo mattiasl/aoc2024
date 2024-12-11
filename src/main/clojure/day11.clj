@@ -16,13 +16,6 @@
             (+ (blink (subs stone 0 div) (dec blinks))
                (blink (str (Long/parseLong (subs stone div))) (dec blinks)))))))))
 
-
-(defn part1 [input times]
-  (->> (reduce (fn [stones _] (flatten (map apply-rule stones)))
-               input
-               (range times))
-       (count)))
-
 (defn solve [input blinks]
   (->> (map (fn [stone] (blink stone blinks)) input)
        (reduce +)))
