@@ -9,9 +9,8 @@
       (if (empty? design)
         1
         (->> (filter (fn [pattern] (starts-with? design pattern)) patterns)
-             (reduce (fn [matches pattern]
-                       (+ matches (count-matches patterns (subs design (count pattern)))))
-                     0))))))
+             (map (fn [pattern] (count-matches patterns (subs design (count pattern)))))
+             (reduce +))))))
 
 (defn solve [input]
   (let [[patterns designs] [(split (first input) #", ") (split (last input) #"\n")]]
