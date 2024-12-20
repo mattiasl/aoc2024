@@ -30,7 +30,6 @@
                           (remove visited)
                           (remove walls))
           neighbour (first neighbours)]
-      (assert (< (count neighbours) 2))
       (if (nil? neighbour)
         (assoc dist-from-src pos dist)
         (recur neighbour (inc dist) (conj visited pos) (assoc dist-from-src pos dist))))))
